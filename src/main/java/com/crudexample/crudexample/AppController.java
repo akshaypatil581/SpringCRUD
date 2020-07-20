@@ -39,6 +39,12 @@ public class AppController {
         return mav;
     }
 
+    @RequestMapping("/delete/{id}")
+    public String deleteProductFrom(@PathVariable(name = "id") Long id) {
+        service.delete(id);
+        return "redirect:/";
+    }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("product") Product product) {
         service.save(product);
